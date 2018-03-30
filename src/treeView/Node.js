@@ -1,8 +1,8 @@
 import React from 'react'
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { createNode, deleteNode, addChild, removeChild } from './actions'
-import { Counter } from '../counter'
+import { createNode, deleteNode, addChild, removeChild, incrementById, decrementById } from './actions'
+import TreeViewCounter from './TreeViewCounter'
 
 export class Node extends Component {
   handleAddChildClick = e => {
@@ -17,6 +17,16 @@ export class Node extends Component {
     deleteNode(id)
   }
 
+  handleIncrementClick = e => {
+    const { id, incrementById } = this.props
+    incrementById(id)
+  }
+
+  handleDecrementClick = e => {
+    const { id, decrementById } = this.props
+    decrementById(id)
+  }
+
   renderChild = childId => {
     const { id } = this.props
     return (
@@ -27,10 +37,16 @@ export class Node extends Component {
   }
 
   render() {
-    const { id, parentId, childIds } = this.props
+    const { id, parentId, childIds, counter } = this.props
     return (
       <div>
-        Counter {id}: <Counter />
+        Counter {id}:
+        <TreeViewCounter
+          id={id}
+          value={counter}
+          onIncrement={this.handleIncrementClick}
+          onDecrement={this.handleDecrementClick}
+        />
         {typeof parentId !== 'undefined' && <button onClick={this.handleRemoveClick}>×</button>}
         <ul>
           {childIds.map(this.renderChild)}
@@ -51,7 +67,9 @@ const mapDispatchToProps = {
   createNode, 
   deleteNode, 
   addChild, 
-  removeChild 
+  removeChild,
+  incrementById,
+  decrementById
 }
 
 const ConnectedNode = connect(mapStateToProps, mapDispatchToProps)(Node)

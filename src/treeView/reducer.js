@@ -1,4 +1,4 @@
-import { ADD_CHILD, REMOVE_CHILD, CREATE_NODE, DELETE_NODE } from './actions'
+import { ADD_CHILD, REMOVE_CHILD, CREATE_NODE, DELETE_NODE, INCREMENT_BY_ID, DECREMENT_BY_ID } from './actions'
 
 const childIds = (state, action) => {
   switch (action.type) {
@@ -16,6 +16,7 @@ const node = (state, action) => {
     case CREATE_NODE:
       return {
         id: action.nodeId,
+        counter: 0,
         childIds: []
       }
     case ADD_CHILD:
@@ -23,6 +24,16 @@ const node = (state, action) => {
       return {
         ...state,
         childIds: childIds(state.childIds, action)
+      }
+    case INCREMENT_BY_ID:
+      return {
+        ...state,
+        counter: state.counter + 1
+      }
+    case DECREMENT_BY_ID:
+      return {
+        ...state,
+        counter: state.counter - 1
       }
     default:
       return state
@@ -45,6 +56,7 @@ const deleteMany = (state, ids) => {
 const initialState = {
   0: {
     id: 0,
+    counter: 0,
     childIds: []
   }
 }
