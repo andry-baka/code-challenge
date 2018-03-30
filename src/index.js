@@ -6,11 +6,7 @@ import App from './App'
 import { reducer as counter } from './counter'
 import { reducer as treeView } from './treeView'
 import registerServiceWorker from './registerServiceWorker'
-
-const store = createStore(combineReducers({
-  counter,
-  treeView
-}))
+import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
