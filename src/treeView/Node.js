@@ -4,6 +4,20 @@ import { connect } from 'react-redux'
 import { createNode, deleteNode, addChild, removeChild, incrementById, decrementById } from './actions'
 import TreeViewCounter from './TreeViewCounter'
 
+import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
+import Icon from 'material-ui/Icon';
+import IconButton from 'material-ui/IconButton';
+import DeleteIcon from 'material-ui-icons/Clear';
+import Grid from 'material-ui/Grid';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
+
+const COLOR_GREEN = '#4CAF50';
 export class Node extends Component {
   handleAddChildClick = e => {
     const { addChild, createNode, id } = this.props
@@ -41,17 +55,34 @@ export class Node extends Component {
     return (
       <div>
         Counter {id}:
-        <TreeViewCounter
-          id={id}
-          value={counter}
-          onIncrement={this.handleIncrementClick}
-          onDecrement={this.handleDecrementClick}
-        />
-        {typeof parentId !== 'undefined' && <button onClick={this.handleRemoveClick}>×</button>}
+        <Grid container alignItems="center">
+          <Grid>
+            <TreeViewCounter
+              id={id}
+              value={counter}
+              onIncrement={this.handleIncrementClick}
+              onDecrement={this.handleDecrementClick}
+            />
+          </Grid>
+          <Grid>
+            {typeof parentId !== 'undefined' && 
+              <IconButton  onClick={this.handleRemoveClick}>
+                <DeleteIcon />
+              </IconButton>}
+          </Grid>
+        </Grid>
         <ul>
           {childIds.map(this.renderChild)}
           <li key="add">
-            <button onClick={this.handleAddChildClick}>Add Counter</button>
+            <Button
+              size="medium"
+              variant="raised"
+              color="primary"
+              style={{backgroundColor: COLOR_GREEN}}
+              onClick={this.handleAddChildClick}
+            >
+              Add Counter
+            </Button>
           </li>
         </ul>
       </div>
