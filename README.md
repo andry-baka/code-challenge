@@ -34,7 +34,7 @@ There are 3 routes defined in this Single Page App:
 
 The provided application code can be modified in any way. `npm` packages and static assets can be added or removed as appropriate.
 
-### Task 1 - Delayed increment and decrement
+### [x]  Task 1 - Delayed increment and decrement -- DONE
 
 When clicking the buttons, incrementing and decrementing of the value should be delayed by approximately 1 second.
 
@@ -52,21 +52,21 @@ Decrement
 2. Press the `-` button
 3. Counter value should decrement after approximately 1 second
 
-### Task 2 - Styling
+### [x]  Task 2 - Styling  -- PARTIAL DONE
 
 The app currently has no styling. Please refer to UX mockups (in assets folder) for visual styles and provided assets and implement it.
 
-### Task 3 - Fix the bug
+###  [x] Task 3 - Fix the bug  -- DONE
 
 We have reports of a bug on the tree view where all the counters increment and decrement together. We require the all the counters not to interfere with each other.
 
-#### Steps to reproduce
+####  Steps to reproduce
 
 1. Navigate to the [Tree View](http://localhost:3000/tree-view)
 2. Add multiple counters
 3. Use the navigation to go to the tree view
 4. Observe the incorrect component state.
 
-### Task 4 - Add an about page
+### [x] Task 4 - Add an about page  -- DONE
 
 Add a new route for [/about](http://localhost:3000/about). On this page tell us about yourself (similar to a resume). You can style this page however you like, express yourself and be creative.
