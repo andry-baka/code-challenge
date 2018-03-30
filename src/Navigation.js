@@ -6,5 +6,6 @@ export default () => (
     <li><NavLink exact to='/'>Home</NavLink></li>
     <li><NavLink to='/counter'>Counter</NavLink></li>
     <li><NavLink to='/tree-view'>Tree View</NavLink></li>
+    <li><NavLink to='/about'>About</NavLink></li>
   </ul>
 )

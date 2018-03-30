@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Navigation from './Navigation'
 import { Counter } from './counter'
 import { TreeView } from './treeView'
+import { About } from './about'
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
         </Route>
         <Route path="/counter" component={Counter} />
         <Route path="/tree-view" component={TreeView} />
+        <Route path="/about" component={About} />
       </Switch>
     </div>
   </Router>
